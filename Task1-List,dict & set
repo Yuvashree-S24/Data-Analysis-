@@ -1,0 +1,44 @@
+#creating the list
+mylist=[10,22,48,89]
+
+#adding the value in the list
+mylist.append(4)
+print(mylist)
+
+#deleting the value
+mylist.remove(78)
+print(mylist)
+
+#modifying the list
+mylist[2]=99
+print("Updated List is:",mylist)
+
+#creating the Dict
+dict={'name':'Raj','age':21,'city':'Bangalore','role':'Intern'}
+#adding the value in a dict
+dict['gender']='Male'
+
+
+#deleting the value
+del dict['role']
+
+#modifying the value
+dict['city']='Chennai'
+
+print("Updated Dict is:",dict)
+
+#creating the Set
+myset={2,48,90,10}
+
+#adding the value to the set
+myset.add(22)
+
+#deleting the value
+myset.remove(90)
+
+#modifying the value
+
+myset.discard(48)
+myset.add(88)
+
+print("Updated set is:",myset)
