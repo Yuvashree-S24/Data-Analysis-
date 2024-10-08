@@ -1,0 +1,42 @@
+import pandas as pd
+df=pd.read_csv('01.Data Cleaning and Preprocessing.csv')
+type(df)
+df.info #concise summary
+df.describe()
+data=df.drop_duplicates()
+data
+df.isnull()
+#if the value is null then it will print true or else it will print false
+df.isnull().sum() #used to sum the null values
+df.notnull()
+df.isnull().sum().sum()
+#sum all the null values in the datasets
+df.isnull().sum().sum()
+#sum all the null values in the datasets
+#used to fill the  null values in forward 
+data3 = df.fillna(method='pad')
+data3
+#used to fill the null values in the backward
+data4=df.fillna(method='bfill')
+import pandas as pd
+from scipy import stats
+#stats is statacical 
+#scipy is a library used for the mathematical functions
+#dectet the outliets using IQR
+#outliers are unwanted data
+#IQR->Inter Quantile Range
+df.columns
+#1 is columns
+#0 is rows
+#inplace is commiting the changes permentaly
+df.drop(['Observation'],axis=1,inplace=True)
+df.columns
+#formula for calculating the IQR
+x=df.quantile(0.25)
+y=df.quantile(0.75)
+IQR=y-x
+print(IQR)
+#any is check only for appropriate values
+data5=df[~((df<(x-1.5*IQR))|(df>(y+1.5*IQR))).any(axis=1)]
+data5
+df.describe()
