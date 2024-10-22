@@ -1,0 +1,64 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data=pd.read_csv("householdtask3.csv")
+data.head(15)
+
+#scatter plot
+plt.scatter(data['year'],data['own'])
+#adding the title
+plt.title("Scatter Plot")
+#labelling
+plt.xlabel("year")
+plt.ylabel("own")
+plt.show()
+
+plt.scatter(data['year'],data['income'])
+plt.title("Yearly Income Breakdown")
+plt.xlabel("year")
+plt.ylabel("income")
+plt.show()
+
+#line chart
+plt.plot(data['year'])
+plt.plot(data['own'])
+plt.title("line chart")
+plt.xlabel("year")
+plt.ylabel("own")
+plt.show()
+
+#line chart
+plt.plot(data['year'])
+plt.plot(data['own'])
+plt.title("line chart")
+plt.xlabel("year")
+plt.ylabel("own")
+plt.show()
+
+#bar chart
+plt.bar(data['year'],data['own'])
+plt.title("Bar chart")
+plt.xlabel("year")
+plt.ylabel("own")
+plt.show()
+
+
+#bar chart
+plt.bar(data['year'],data['own'])
+plt.title("Bar chart")
+plt.xlabel("year")
+plt.ylabel("own")
+plt.show()
+
+
+#histogram 
+plt.hist(data['income'],bins=20,edgecolor="red",alpha=0.8)
+plt.title('histogram')
+plt.show()
+
+
+plt.hist(data["age"],bins=50,edgecolor="black",alpha=0.8)
+plt.title("Histogram Plot")
+plt.show()
