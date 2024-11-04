@@ -1,0 +1,67 @@
+import numpy as np
+import pandas as pd 
+import matplotlib.pyplot as plt
+import seaborn as sns
+%matplotlib inline  
+#it is a command it allows u to display the plots and visualization directly within the notebook 
+
+df=pd.read_csv('heart.csv')
+df.head()
+df.tail()
+#we can look at the column names
+df.columns.values
+#checking for the null values
+df.isna().sum()
+df.info() #summary of the function
+#plotting the histogram of all numeric values
+#bin is interval or ranges in which data is divided for analysis
+#grid is a evenly spaced lines or dots that form a network point on a graph
+#figsixe is lenght and breadth
+df.hist(bins=60, grid=False, figsize=(20,15))
+df.describe()
+questions=["1. How many people have heart disease and how many people doesn't have heart disease?",
+           "2. People of which sex has most heart disease?",
+           "3. People of which sex which type of chest pain most?"
+           "4. People with which chest pain are most pron to have heart disease?"]
+print(questions)
+#answer for the 1st questions
+#getting the values
+#the output 1 represents the heart disease & 0 is none 
+df.target.value_counts()
+#plotting the bar chart
+df.target.value_counts().plot(kind='bar',color=["orchid","salmon"])
+plt.title("Heart Disease Values")
+plt.xlabel("1=Heart Disease, 0= No heart disease")
+plt.ylabel("Amount")
+#plotting the pie chart
+df.target.value_counts().plot(kind="pie",figsize=(4,4))
+plt.legend(["Disease","No disease"])
+#getting answer for the sex column part 
+df.sex.value_counts()
+df.sex.value_counts().plot(kind="bar",color=["red","brown"])
+plt.title("Male Female Ratio")
+plt.xlabel("1 = Male, 0 = Female")
+plt.ylabel("Ratios")
+df.sex.value_counts().plot(kind='pie',figsize=(8,6))
+plt.title("Male and Female Ratio")
+plt.legend(["Male","Female"])
+#getting answer for 2nd questions
+#crosstab creates a cross tabulation that displays the frequency or a count of occurences for the combinatons
+pd.crosstab(df.target,df.sex)
+sns.countplot(x="target",data=df,hue="sex")
+plt.title("Heart disease frequency for sex")
+plt.xlabel("0- no disease, 1=heart disease")
+#3rd question answer
+df.cp.value_counts()
+df.cp.value_counts().plot(kind="bar",color=["salmon",'lightskyblue','springgreen','red'])
+plt.title("Chest pain type vs count")
+pd.crosstab(df.sex,df.cp)
+pd.crosstab(df.sex,df.cp).plot(kind="bar",color=["coral","lightskyblue","plum","red"])
+plt.title("Type of chest pain for sex")
+plt.xlabel("0-Female,1=Male")
+#4th question answer
+pd.crosstab(df.cp,df.target)
+sns.countplot(x="cp",data=df,hue="target")
+sns.displot(x="age",data=df,bins=30,kde=True)
+#displot is distribution plot
+sns.displot(x="thalach",data=df,bins=30,kde=True,color="chocolate")
